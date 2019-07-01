@@ -1,6 +1,10 @@
-#Test script to work out billion second birthday
+#Test script to work out billion second birthday, taking into account daylight saving
 
 import datetime as dt
+import pytz
+
+local = pytz.timezone('Europe/London')
+utc = pytz.utc
 
 print("What is your date of birth?")
 Day = (int(input("Day (format: DD): ")))
@@ -12,13 +16,16 @@ Hour = (int(input("Hour (format HH (24h)): ")))
 Minute = (int(input("Minute (format MM): ")))
 
 date = dt.datetime(Year,Month,Day,Hour,Minute)
+utcbirth = date.astimezone(utc)
+
 timedelta = dt.timedelta(seconds=1000000000)
 
-newdate = date + timedelta
+newutcdate = utcbirth + timedelta
+locdate = newutcdate.astimezone(local)
 
-if newdate.hour < 12:
+if locdate.hour < 12:
     clock = 'am'
 else:
     clock = 'pm'
 
-print("\nYour Billion Second Birthday is: ", newdate.day,"-",newdate.month,"-",newdate.year,", at ",newdate.hour,":",newdate.minute,clock)
+print("\nYour Billion Second Birthday is: ", locdate.day,"-",locdate.month,"-",locdate.year,", at ",locdate.hour,":",locdate.minute,clock)
