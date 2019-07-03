@@ -1,5 +1,9 @@
-#Test script to work out billion second birthday, taking into account daylight saving
+#Test script to work out billion second birthday, taking into account daylight saving.
 
+# leap seconds do not need accounting for. There have only been 27 leap seconds added,
+# and since DOB is added as hours and minutes, the leap seconds will not change the day
+# of Billion Second Birthday.
+ 
 import datetime as dt
 import pytz
 
