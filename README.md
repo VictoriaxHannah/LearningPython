@@ -27,3 +27,4 @@ It will output both the number of primes found, and what they are.
 * ~~Billion Second Birthday~~
 * ~~Prime Number Calculator~~
 * Calculator for the angle between two vectors
+* 'Hangman' style game
